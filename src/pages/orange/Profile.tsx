@@ -1,7 +1,15 @@
-import { ChevronRight, Award, Shield } from 'lucide-react'
+import { ChevronRight, Award, Shield, LogOut } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const OrangeProfile = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('selectedTheme')
+    navigate('/theme')
+  }
+
   const userInfo = {
     name: '王浩',
     role: '碳汇项目总负责人',
@@ -177,6 +185,18 @@ const OrangeProfile = () => {
             ))}
           </div>
         </motion.div>
+
+        {/* 退出当前身份按钮 */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          onClick={handleLogout}
+          className="w-full bg-red-500 hover:bg-red-600 text-white py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-colors"
+        >
+          <LogOut size={20} />
+          退出当前身份
+        </motion.button>
       </div>
     </div>
   )
