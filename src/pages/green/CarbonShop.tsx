@@ -74,7 +74,7 @@ const CarbonShop = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.5, type: "spring" }}
-          className="fixed bottom-20 right-4"
+          className="fixed bottom-32 right-4"
         >
           <button className="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center relative">
             <ShoppingCart className="text-white" size={24} />

@@ -115,20 +115,29 @@ const OrangeHome = () => {
         >
           <h3 className="font-bold mb-4">交易情况</h3>
           
-          <div className="h-32 flex items-end justify-around">
+          <div className="h-32 flex items-end justify-around bg-gray-50 rounded-lg p-2">
             {transactionData.labels.map((label, index) => (
-              <div key={index} className="flex-1 mx-2 flex flex-col items-center">
-                <div className="w-full flex flex-col">
+              <div key={index} className="flex-1 mx-1 flex flex-col items-center">
+                <div className="text-xs text-gray-600 mb-1 font-medium">
+                  {transactionData.orange[index] + transactionData.green[index]}
+                </div>
+                <div className="w-8 flex flex-col items-center justify-end" style={{ height: '80px' }}>
                   <div 
-                    className="bg-orange-400 rounded-t"
-                    style={{ height: `${transactionData.orange[index]}px` }}
+                    className="w-full bg-orange-400 transition-all duration-500 ease-out"
+                    style={{ 
+                      height: `${(transactionData.orange[index] / 60) * 100}%`,
+                      minHeight: '2px'
+                    }}
                   />
                   <div 
-                    className="bg-green-400 rounded-b"
-                    style={{ height: `${transactionData.green[index]}px` }}
+                    className="w-full bg-green-400 transition-all duration-500 ease-out"
+                    style={{ 
+                      height: `${(transactionData.green[index] / 60) * 100}%`,
+                      minHeight: '2px'
+                    }}
                   />
                 </div>
-                <span className="text-xs text-gray-500 mt-2">{label}</span>
+                <span className="text-xs text-gray-500 mt-2">{label}日</span>
               </div>
             ))}
           </div>

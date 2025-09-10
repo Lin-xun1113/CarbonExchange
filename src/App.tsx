@@ -49,42 +49,40 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={
-            currentTheme ? <Navigate to={`/${currentTheme}`} /> : <ThemeSelector onSelectTheme={handleThemeSelect} />
-          } />
-          
-          {/* 绿色主题路由 - 农业碳汇 */}
-          <Route path="/green" element={<GreenLayout />}>
-            <Route index element={<GreenHome />} />
-            <Route path="record" element={<FarmRecord />} />
-            <Route path="shop" element={<CarbonShop />} />
-            <Route path="profile" element={<GreenProfile />} />
-          </Route>
+    <AnimatePresence mode="wait">
+      <Routes>
+        <Route path="/" element={
+          currentTheme ? <Navigate to={`/${currentTheme}`} /> : <ThemeSelector onSelectTheme={handleThemeSelect} />
+        } />
+        
+        {/* 绿色主题路由 - 农业碳汇 */}
+        <Route path="/green" element={<GreenLayout />}>
+          <Route index element={<GreenHome />} />
+          <Route path="record" element={<FarmRecord />} />
+          <Route path="shop" element={<CarbonShop />} />
+          <Route path="profile" element={<GreenProfile />} />
+        </Route>
 
-          {/* 蓝色主题路由 - ESG平台 */}
-          <Route path="/blue" element={<BlueLayout />}>
-            <Route index element={<BlueHome />} />
-            <Route path="esg" element={<ESGCenter />} />
-            <Route path="market" element={<CarbonMarket />} />
-            <Route path="profile" element={<BlueProfile />} />
-          </Route>
+        {/* 蓝色主题路由 - ESG平台 */}
+        <Route path="/blue" element={<BlueLayout />}>
+          <Route index element={<BlueHome />} />
+          <Route path="esg" element={<ESGCenter />} />
+          <Route path="market" element={<CarbonMarket />} />
+          <Route path="profile" element={<BlueProfile />} />
+        </Route>
 
-          {/* 橙色主题路由 - 管理平台 */}
-          <Route path="/orange" element={<OrangeLayout />}>
-            <Route index element={<OrangeHome />} />
-            <Route path="manage" element={<CarbonManage />} />
-            <Route path="analysis" element={<DataAnalysis />} />
-            <Route path="profile" element={<OrangeProfile />} />
-          </Route>
+        {/* 橙色主题路由 - 管理平台 */}
+        <Route path="/orange" element={<OrangeLayout />}>
+          <Route index element={<OrangeHome />} />
+          <Route path="manage" element={<CarbonManage />} />
+          <Route path="analysis" element={<DataAnalysis />} />
+          <Route path="profile" element={<OrangeProfile />} />
+        </Route>
 
-          {/* 主题选择器 */}
-          <Route path="/theme" element={<ThemeSelector onSelectTheme={handleThemeSelect} />} />
-        </Routes>
-      </AnimatePresence>
-    </div>
+        {/* 主题选择器 */}
+        <Route path="/theme" element={<ThemeSelector onSelectTheme={handleThemeSelect} />} />
+      </Routes>
+    </AnimatePresence>
   )
 }
 
