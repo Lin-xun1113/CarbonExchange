@@ -25,12 +25,12 @@ const OrangeLayout = () => {
       </div>
 
       {/* 主内容区域 */}
-      <div className="flex-1 overflow-y-auto pb-16">
+      <div className="flex-1 overflow-y-auto pb-20">
         <Outlet />
       </div>
 
       {/* 底部导航 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-50">
         <div className="flex justify-around items-center py-2">
           {navItems.map((item) => {
             const Icon = item.icon

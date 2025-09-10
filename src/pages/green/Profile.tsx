@@ -130,19 +130,21 @@ const GreenProfile = () => {
           <div className="text-sm text-gray-600 mb-2">村里买碳汇，分你50元</div>
           
           {/* 简化的图表 */}
-          <div className="h-32 bg-gradient-to-t from-green-50 to-transparent rounded-lg flex items-end justify-around px-2">
+          <div className="h-32 bg-gradient-to-t from-green-50 to-transparent rounded-lg flex items-end justify-around px-2 relative">
             {chartData.village.map((value, index) => (
-              <div key={index} className="flex-1 mx-0.5">
+              <div key={index} className="flex-1 mx-0.5 flex flex-col items-center">
+                <span className="text-xs text-green-600 mb-1">{value}</span>
                 <div 
-                  className="bg-green-500 rounded-t"
-                  style={{ height: `${value}%` }}
+                  className="bg-green-500 rounded-t w-full transition-all duration-500"
+                  style={{ height: `${(value / 60) * 100}%`, minHeight: '8px' }}
                 ></div>
               </div>
             ))}
           </div>
           <div className="flex justify-between mt-2 text-xs text-gray-500">
-            <span>12月</span>
-            <span>22日</span>
+            {chartData.labels.slice(0, 7).map((label, i) => (
+              <span key={i} className="text-center">{label.replace('日', '')}</span>
+            ))}
           </div>
         </motion.div>
 

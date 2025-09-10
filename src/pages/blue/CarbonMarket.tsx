@@ -119,12 +119,13 @@ const CarbonMarket = () => {
           </div>
           
           {/* 简化图表 */}
-          <div className="h-40 flex items-end justify-around">
+          <div className="h-40 flex items-end justify-around relative">
             {chartData.values.map((value, index) => (
               <div key={index} className="flex-1 mx-1 flex flex-col items-center">
+                <span className="text-xs text-blue-600 mb-1 font-medium">{value}%</span>
                 <div 
-                  className="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t"
-                  style={{ height: `${value}%` }}
+                  className="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t transition-all duration-700"
+                  style={{ height: `${(value / 130) * 100}%`, minHeight: '12px' }}
                 />
                 <span className="text-xs text-gray-500 mt-2">{chartData.labels[index]}月</span>
               </div>

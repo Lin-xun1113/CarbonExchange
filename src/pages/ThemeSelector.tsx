@@ -42,8 +42,8 @@ const ThemeSelector = ({ onSelectTheme }: ThemeSelectorProps) => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-6xl w-full">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 overflow-y-auto">
+      <div className="max-w-6xl w-full mx-auto py-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

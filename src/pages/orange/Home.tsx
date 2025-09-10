@@ -58,15 +58,15 @@ const OrangeHome = () => {
           </div>
           
           {/* 柱状图和折线图组合 */}
-          <div className="flex items-end justify-around h-32 mb-4">
+          <div className="flex items-end justify-around h-32 mb-4 relative">
             {flowData.bars.map((height, index) => (
               <div key={index} className="flex-1 mx-1 flex flex-col items-center">
-                <span className="text-xs mb-1">{flowData.line[index]}</span>
+                <span className="text-xs mb-1 font-medium">{flowData.line[index]}元</span>
                 <div 
-                  className="w-full bg-white/30 rounded-t"
-                  style={{ height: `${height}%` }}
+                  className="w-full bg-white/30 rounded-t transition-all duration-500"
+                  style={{ height: `${(height / 100) * 100}%`, minHeight: '16px' }}
                 />
-                <span className="text-xs mt-1">{flowData.labels[index]}</span>
+                <span className="text-xs mt-1 opacity-90">{flowData.labels[index]}日</span>
               </div>
             ))}
           </div>

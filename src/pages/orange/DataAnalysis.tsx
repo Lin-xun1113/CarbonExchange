@@ -131,12 +131,13 @@ const DataAnalysis = () => {
         >
           <h3 className="font-bold mb-4">收益流水统计：</h3>
           
-          <div className="h-32 flex items-end justify-between">
+          <div className="h-32 flex items-end justify-between relative">
             {chartData.values.map((value, index) => (
-              <div key={index} className="flex-1 mx-px">
+              <div key={index} className="flex-1 mx-px flex flex-col items-center">
+                {index % 3 === 0 && <span className="text-xs text-orange-600 mb-1">{value}</span>}
                 <div 
-                  className="w-full bg-gradient-to-t from-orange-500 to-orange-300 rounded-t"
-                  style={{ height: `${(value / 85) * 100}%` }}
+                  className="w-full bg-gradient-to-t from-orange-500 to-orange-300 rounded-t transition-all duration-300"
+                  style={{ height: `${(value / 85) * 100}%`, minHeight: '4px' }}
                 />
               </div>
             ))}
