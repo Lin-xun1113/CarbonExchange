@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useBlueCart } from '../../contexts/BlueCartContext'
 
 const CarbonMarket = () => {
-  const { cartItems, addToCart, removeFromCart, updateCartQuantity, clearCart, getCartTotal } = useBlueCart()
+  const { cartItems, addToCart, updateCartQuantity, getCartTotal } = useBlueCart()
   const [searchQuery, setSearchQuery] = useState('')
   const [activeTab, setActiveTab] = useState('village')
   const [showCart, setShowCart] = useState(false)

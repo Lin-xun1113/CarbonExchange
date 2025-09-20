@@ -1,10 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Search, ArrowRight, Eye, TrendingUp, X, Filter, Calendar, DollarSign } from 'lucide-react'
 
 const DataAnalysis = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
   const [showAllVillages, setShowAllVillages] = useState(false)
   const [showTransactionDetail, setShowTransactionDetail] = useState(false)

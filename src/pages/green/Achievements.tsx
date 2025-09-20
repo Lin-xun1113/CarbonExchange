@@ -5,7 +5,7 @@ import { usePoints } from '../../contexts/PointsContext'
 
 const Achievements = () => {
   const navigate = useNavigate()
-  const { points, pointsHistory } = usePoints()
+  const { pointsHistory } = usePoints()
 
   // 计算各种统计数据
   const totalEarned = pointsHistory.filter(p => p.type === 'add').reduce((sum, p) => sum + p.amount, 0)

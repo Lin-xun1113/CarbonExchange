@@ -101,7 +101,7 @@ const BluePolicyDetail = () => {
     }
   }
 
-  const policy = policyData[id as keyof typeof policyData] || policyData[1]
+  const policy = policyData[id as '1' | '2' | '3'] || policyData[1]
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">

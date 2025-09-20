@@ -6,7 +6,7 @@ import { useBlueCart } from '../../contexts/BlueCartContext'
 
 const BlueHome = () => {
   const navigate = useNavigate()
-  const { cartItems, addToCart, removeFromCart, updateCartQuantity, clearCart, getCartTotal } = useBlueCart()
+  const { cartItems, addToCart, updateCartQuantity, getCartTotal } = useBlueCart()
   const [searchQuery, setSearchQuery] = useState('')
   const [showCart, setShowCart] = useState(false)
   const [showQuantityModal, setShowQuantityModal] = useState(false)
