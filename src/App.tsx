@@ -12,6 +12,10 @@ import GreenHome from './pages/green/Home'
 import FarmRecord from './pages/green/FarmRecord'
 import CarbonShop from './pages/green/CarbonShop'
 import GreenProfile from './pages/green/Profile'
+import GreenPolicySupport from './pages/green/GreenPolicySupport'
+import PolicyApplication from './pages/green/PolicyApplication'
+import ExpertForum from './pages/green/ExpertForum'
+import KnowledgeQuiz from './pages/green/KnowledgeQuiz'
 
 // 导入蓝色主题页面
 import BlueHome from './pages/blue/Home'
@@ -61,6 +65,11 @@ function App() {
           <Route path="record" element={<FarmRecord />} />
           <Route path="shop" element={<CarbonShop />} />
           <Route path="profile" element={<GreenProfile />} />
+          <Route path="policy-support" element={<GreenPolicySupport />} />
+          <Route path="policy-application" element={<PolicyApplication />} />
+          <Route path="expert-forum" element={<ExpertForum />} />
+          <Route path="knowledge-quiz" element={<KnowledgeQuiz />} />
+          <Route path="knowledge-quiz/:quizId" element={<KnowledgeQuiz />} />
         </Route>
 
         {/* 蓝色主题路由 - ESG平台 */}

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Search, ChevronRight, Leaf, BookOpen, FileText, User, X, ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const GreenHome = () => {
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
   const [searchType, setSearchType] = useState<'knowledge' | 'policy' | 'expert'>('knowledge')
   const [searchResults, setSearchResults] = useState<any[]>([])
@@ -277,6 +279,15 @@ const GreenHome = () => {
     )
   }
 
+  // 处理公告点击
+  const handleAnnouncementClick = (announcementId: number) => {
+    if (announcementId === 1) {
+      // 绿色农业政策支持
+      navigate('/green/policy-support')
+    }
+    // 可以为其他公告添加相应的处理逻辑
+  }
+
   const announcements = [
     { id: 1, title: '绿色农业政策支持', subtitle: '科学施肥享奖励', image: '🌾' },
     { id: 2, title: '碳汇知识培训', subtitle: '免费参加培训课程', image: '📚' },
@@ -362,10 +373,11 @@ const GreenHome = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-4 shadow-sm flex items-center justify-between"
+                className="bg-white rounded-xl p-4 shadow-sm flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow"
                 style={{
                   backgroundImage: 'linear-gradient(135deg, #e6fffa 0%, #c6f6d5 100%)'
                 }}
+                onClick={() => handleAnnouncementClick(item.id)}
               >
                 <div className="flex items-center gap-4">
                   <div className="text-3xl">{item.image}</div>
@@ -390,7 +402,8 @@ const GreenHome = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between"
+                className="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => navigate('/green/expert-forum')}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -420,7 +433,8 @@ const GreenHome = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4 flex items-center justify-between"
+                className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4 flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => navigate('/green/knowledge-quiz')}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center">
