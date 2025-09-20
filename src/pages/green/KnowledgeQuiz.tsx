@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { ArrowLeft, Trophy, Star, CheckCircle, XCircle, RotateCcw, Award } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
+import { usePoints } from '../../contexts/PointsContext'
 
 interface Question {
   id: number
@@ -24,13 +25,13 @@ interface Quiz {
 const KnowledgeQuiz = () => {
   const navigate = useNavigate()
   const { quizId } = useParams<{ quizId: string }>()
+  const { points: userPoints, addPoints } = usePoints()
   const [selectedQuiz, setSelectedQuiz] = useState<Quiz | null>(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({})
   const [showResult, setShowResult] = useState(false)
   const [score, setScore] = useState(0)
   const [earnedPoints, setEarnedPoints] = useState(0)
-  const [userPoints, setUserPoints] = useState(1250) // 用户当前积分
 
   const handleGoBack = () => {
     if (selectedQuiz && !showResult) {
@@ -247,13 +248,18 @@ const KnowledgeQuiz = () => {
     setScore(finalScore)
 
     // 计算获得的积分
+    let pointsToAdd = 0
     if (finalScore >= selectedQuiz.passScore) {
-      setEarnedPoints(selectedQuiz.totalPoints)
-      setUserPoints(prev => prev + selectedQuiz.totalPoints)
+      pointsToAdd = selectedQuiz.totalPoints
     } else {
-      const partialPoints = Math.round(selectedQuiz.totalPoints * (finalScore / 100) * 0.5)
-      setEarnedPoints(partialPoints)
-      setUserPoints(prev => prev + partialPoints)
+      pointsToAdd = Math.round(selectedQuiz.totalPoints * (finalScore / 100) * 0.5)
+    }
+    
+    setEarnedPoints(pointsToAdd)
+    
+    // 添加积分到全局系统
+    if (pointsToAdd > 0) {
+      addPoints(pointsToAdd, `知识问答：${selectedQuiz.title}`)
     }
 
     setShowResult(true)
@@ -518,7 +524,7 @@ const KnowledgeQuiz = () => {
                     {getDifficultyText(quiz.difficulty)}
                   </span>
                   <div className="flex items-center gap-1 text-green-600">
-                    <Trophy size={16} />
+                    <Trophy className="text-green-600" size={16} />
                     <span className="text-sm font-semibold">{quiz.totalPoints}</span>
                   </div>
                 </div>
