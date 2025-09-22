@@ -103,7 +103,7 @@ const BlueAnnouncement = () => {
     }
   }
 
-  const announcement = announcementData[id as keyof typeof announcementData] || announcementData[1]
+  const announcement = announcementData[id as '1' | '2' | '3'] || announcementData[1]
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">

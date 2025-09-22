@@ -68,7 +68,7 @@ const ESGReports = () => {
     }
   ]
 
-  const handleDownload = (reportId: number) => {
+  const handleDownload = () => {
     // 模拟下载
     alert('正在下载报告...')
   }
@@ -176,7 +176,7 @@ const ESGReports = () => {
                         查看详情
                       </button>
                       <button
-                        onClick={() => handleDownload(report.id)}
+                        onClick={() => handleDownload()}
                         className="p-1.5 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors"
                       >
                         <Download size={14} />

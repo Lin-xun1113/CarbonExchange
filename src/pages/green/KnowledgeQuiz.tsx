@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { ArrowLeft, Trophy, Star, CheckCircle, XCircle, RotateCcw, Award } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, Trophy, Star, CheckCircle, RotateCcw, Award } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
 import { usePoints } from '../../contexts/PointsContext'
 

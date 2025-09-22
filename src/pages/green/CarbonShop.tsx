@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ShoppingCart, Search, Gift, Leaf, Package, Star, Plus, Minus, X, CheckCircle } from 'lucide-react'
+import { ShoppingCart, Search, Leaf, Star, Plus, Minus, X, CheckCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePoints } from '../../contexts/PointsContext'
 
@@ -82,15 +82,6 @@ const CarbonShop = () => {
         setShowCheckoutSuccess(false)
       }, 3000)
     }
-  }
-
-  const isInCart = (productId: number) => {
-    return cartItems.some(item => item.id === productId)
-  }
-
-  const getCartItemQuantity = (productId: number) => {
-    const item = cartItems.find(item => item.id === productId)
-    return item?.quantity || 0
   }
 
   return (

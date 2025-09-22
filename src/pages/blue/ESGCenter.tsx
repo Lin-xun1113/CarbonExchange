@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Award, FileText, BarChart, Download, TrendingUp, CheckCircle, XCircle, AlertCircle, ChevronRight } from 'lucide-react'
+import { Search, FileText, BarChart, Download, TrendingUp, CheckCircle, XCircle, AlertCircle, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
@@ -93,7 +93,7 @@ const ESGCenter = () => {
     navigate(`/blue/esg-report/${reportId}`)
   }
 
-  const handleImproveDetail = (category: string) => {
+  const handleImproveDetail = () => {
     setShowImproveModal(true)
   }
 
@@ -184,9 +184,9 @@ const ESGCenter = () => {
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    {item.score >= 85 ? (
+                    {(item.score || 0) >= 85 ? (
                       <CheckCircle className="text-green-500" size={24} />
-                    ) : item.score >= 70 ? (
+                    ) : (item.score || 0) >= 70 ? (
                       <AlertCircle className="text-yellow-500" size={24} />
                     ) : (
                       <XCircle className="text-red-500" size={24} />
@@ -197,7 +197,7 @@ const ESGCenter = () => {
                     </div>
                   </div>
                   <button 
-                    onClick={() => handleImproveDetail(item.category)}
+                    onClick={() => handleImproveDetail()}
                     className="text-blue-600 text-sm font-medium flex items-center gap-1"
                   >
                     定制提高
@@ -207,9 +207,9 @@ const ESGCenter = () => {
                 
                 {/* 改进建议预览 */}
                 <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
-                  {item.score >= 85 ? (
+                  {(item.score || 0) >= 85 ? (
                     <p>✨ 表现优秀！继续保持并追求更高标准。</p>
-                  ) : item.score >= 70 ? (
+                  ) : (item.score || 0) >= 70 ? (
                     <p>📈 有提升空间，建议重点关注关键指标改进。</p>
                   ) : (
                     <p>⚠️ 需要改进，请查看详细改进方案。</p>

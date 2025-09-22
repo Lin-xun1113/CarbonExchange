@@ -1,4 +1,4 @@
-import { ChevronRight, Award, Settings, HelpCircle, LogOut, Eye, Check, X, TrendingUp, Users, MessageCircle } from 'lucide-react'
+import { ChevronRight, Award, Settings, HelpCircle, LogOut, Eye, Check, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'

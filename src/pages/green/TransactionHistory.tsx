@@ -1,4 +1,4 @@
-import { ArrowLeft, Search, Filter, TrendingUp, TrendingDown, Calendar, Wallet } from 'lucide-react'
+import { ArrowLeft, Search, TrendingUp, TrendingDown, Calendar, Wallet } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { usePoints } from '../../contexts/PointsContext'
