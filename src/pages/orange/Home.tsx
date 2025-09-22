@@ -288,6 +288,7 @@ const OrangeHome = () => {
                       {currentData.values[index]}
                     </span>
                   </div>
+                  <div className="my-3" />
                   <p className="text-xs text-center mt-2">{currentData.labels[index]}</p>
                 </motion.div>
               ))}
@@ -372,6 +373,7 @@ const OrangeHome = () => {
                   </div>
                 ))}
               </div>
+              <div className="my-5" />
               <div className="flex justify-center gap-4 mt-4">
                 <span className="flex items-center text-xs">
                   <span className="w-3 h-3 bg-green-400 rounded mr-1"></span> 农户交易

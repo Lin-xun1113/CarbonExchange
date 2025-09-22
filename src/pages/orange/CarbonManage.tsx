@@ -228,6 +228,7 @@ const CarbonManage = () => {
                   whileHover={{ scale: 1.1 }}
                 >
                   <div className="bg-white/80 hover:bg-white rounded-t relative h-full">
+                    <div className="my-3" />
                     <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs font-bold">
                       {chartData.values[index]}
                     </span>
@@ -237,11 +238,21 @@ const CarbonManage = () => {
               ))}
             </div>
           </div>
+          <div className="my-12" />
 
-          <div className="flex justify-between mt-4 text-sm">
-            <span>总交易量：935笔</span>
-            <span>总碳汇量：56,100吨</span>
-            <span>总收益：¥3,366,000</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+            <div className="bg-white/20 rounded-lg p-3 text-center">
+              <p className="text-xs text-white/80 mb-1">总交易量</p>
+              <p className="text-lg font-bold">935笔</p>
+            </div>
+            <div className="bg-white/20 rounded-lg p-3 text-center">
+              <p className="text-xs text-white/80 mb-1">总碳汇量</p>
+              <p className="text-lg font-bold">56,100吨</p>
+            </div>
+            <div className="bg-white/20 rounded-lg p-3 text-center">
+              <p className="text-xs text-white/80 mb-1">总收益</p>
+              <p className="text-lg font-bold">¥3,366,000</p>
+            </div>
           </div>
         </motion.div>
       </div>

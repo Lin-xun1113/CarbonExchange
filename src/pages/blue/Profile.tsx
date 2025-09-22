@@ -227,9 +227,9 @@ const BlueProfile = () => {
                 whileHover={{ x: 5 }}
                 className="flex items-center justify-between"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                  <div>
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0"></div>
+                  <div className="flex-1 min-w-0">
                     <span className="text-sm">{transaction.date}：{transaction.type}</span>
                     {transaction.amount && (
                       <span className="ml-1 font-bold text-blue-600">
@@ -242,7 +242,7 @@ const BlueProfile = () => {
                     <p className="text-xs text-gray-400 mt-1">碳汇量：{transaction.carbon}吨</p>
                   </div>
                 </div>
-                <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full whitespace-nowrap flex-shrink-0">
                   {transaction.status}
                 </span>
               </motion.div>

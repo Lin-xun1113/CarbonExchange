@@ -225,23 +225,23 @@ const OrangeProfile = () => {
           <div className="space-y-3">
             {enterprises.filter(ent => ent.status === 'pending').slice(0, 2).map((enterprise) => (
               <div key={enterprise.id} className="bg-gray-50 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <div>
-                    <h4 className="font-medium text-sm">{enterprise.name}</h4>
-                    <p className="text-xs text-gray-500">{enterprise.type} • {enterprise.level} • 联系人：{enterprise.contact}</p>
+                <div className="flex items-start justify-between mb-2 gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-sm truncate">{enterprise.name}</h4>
+                    <p className="text-xs text-gray-500 line-clamp-2">{enterprise.type} • {enterprise.level} • 联系人：{enterprise.contact}</p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-shrink-0">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       onClick={() => handleEnterpriseAction(enterprise.id, 'approve')}
-                      className="bg-green-500 text-white px-3 py-1 rounded text-xs"
+                      className="bg-green-500 text-white px-3 py-1 rounded text-xs whitespace-nowrap"
                     >
                       通过
                     </motion.button>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       onClick={() => handleEnterpriseAction(enterprise.id, 'reject')}
-                      className="bg-red-500 text-white px-3 py-1 rounded text-xs"
+                      className="bg-red-500 text-white px-3 py-1 rounded text-xs whitespace-nowrap"
                     >
                       拒绝
                     </motion.button>
@@ -249,7 +249,7 @@ const OrangeProfile = () => {
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {enterprise.certifications.map((cert, idx) => (
-                    <span key={idx} className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded">
+                    <span key={idx} className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded whitespace-nowrap">
                       {cert}
                     </span>
                   ))}
@@ -478,9 +478,9 @@ const OrangeProfile = () => {
               <div className="space-y-4 overflow-y-auto max-h-96">
                 {enterprises.map((enterprise) => (
                   <div key={enterprise.id} className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-medium text-sm">{enterprise.name}</h4>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
+                    <div className="flex items-start justify-between mb-3 gap-3">
+                      <h4 className="font-medium text-sm flex-1 min-w-0 truncate">{enterprise.name}</h4>
+                      <span className={`text-xs px-2 py-1 rounded-full whitespace-nowrap flex-shrink-0 ${
                         enterprise.status === 'pending' ? 'bg-orange-100 text-orange-600' :
                         enterprise.status === 'approved' ? 'bg-green-100 text-green-600' :
                         'bg-red-100 text-red-600'
@@ -509,7 +509,7 @@ const OrangeProfile = () => {
                       <span className="text-xs text-gray-500">认证资质：</span>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {enterprise.certifications.map((cert, idx) => (
-                          <span key={idx} className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded">
+                          <span key={idx} className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded whitespace-nowrap">
                             {cert}
                           </span>
                         ))}
@@ -517,16 +517,16 @@ const OrangeProfile = () => {
                     </div>
 
                     {enterprise.status === 'pending' && (
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 mt-3">
                         <button
                           onClick={() => handleEnterpriseAction(enterprise.id, 'approve')}
-                          className="flex-1 bg-green-500 text-white py-2 rounded text-xs"
+                          className="flex-1 bg-green-500 text-white py-2 rounded text-xs font-medium"
                         >
                           通过审核
                         </button>
                         <button
                           onClick={() => handleEnterpriseAction(enterprise.id, 'reject')}
-                          className="flex-1 bg-red-500 text-white py-2 rounded text-xs"
+                          className="flex-1 bg-red-500 text-white py-2 rounded text-xs font-medium"
                         >
                           拒绝审核
                         </button>
