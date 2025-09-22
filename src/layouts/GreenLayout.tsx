@@ -13,22 +13,21 @@ const GreenLayout = () => {
   ]
 
   return (
-    <div className="app-container">
-      <div className="h-screen flex flex-col bg-gray-50">
-        {/* 状态栏 */}
-        <div className="bg-gradient-to-r from-green-400 to-green-500 text-white px-4 py-2 flex justify-between items-center">
-          <span className="text-sm">9:41</span>
-          <div className="flex gap-1">
-            <span className="text-sm">•••</span>
-            <span className="text-sm">📶</span>
-            <span className="text-sm">🔋</span>
-          </div>
+    <div className="flex flex-col h-screen bg-gradient-to-b from-green-50 to-white">
+      {/* 状态栏 */}
+      <div className="bg-gradient-to-r from-green-400 to-green-500 text-white px-4 py-2 flex justify-between items-center">
+        <span className="text-sm">9:41</span>
+        <div className="flex gap-1">
+          <span className="text-sm">•••</span>
+          <span className="text-sm">📶</span>
+          <span className="text-sm">🔋</span>
         </div>
+      </div>
 
-        {/* 主内容区域 */}
-        <div className="flex-1 main-content pb-20">
-          <Outlet />
-        </div>
+      {/* 主内容区域 */}
+      <div className="flex-1 overflow-y-auto pb-20">
+        <Outlet />
+      </div>
 
         {/* 底部导航 */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-50">
@@ -63,7 +62,6 @@ const GreenLayout = () => {
               )
             })}
           </div>
-        </div>
       </div>
     </div>
   )
