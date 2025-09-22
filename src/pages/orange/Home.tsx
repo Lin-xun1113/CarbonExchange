@@ -1,10 +1,10 @@
-import { TrendingUp, Search, BarChart, Activity, Users, FileText, PieChart, LineChart } from 'lucide-react'
+import { TrendingUp, Search, BarChart, Activity, FileText, PieChart, LineChart } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom' // 暂时未使用
 
 const OrangeHome = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate() // 暂时未使用
   const [searchQuery, setSearchQuery] = useState('')
   const [showSearchResults, setShowSearchResults] = useState(false)
   const [selectedData, setSelectedData] = useState<any>(null)
@@ -262,7 +262,7 @@ const OrangeHome = () => {
           )}
           
           <div className="grid grid-cols-3 gap-2 mb-4">
-            {currentData.pieData.slice(0, 3).map((item, index) => (
+            {currentData.pieData.slice(0, 3).map((item: any, index: number) => (
               <div key={index} className="text-center">
                 <div className={`w-12 h-12 ${item.color} rounded-full mx-auto mb-1 flex items-center justify-center text-xs font-bold`}>
                   {typeof item.value === 'number' ? item.value : item.value}
@@ -275,7 +275,7 @@ const OrangeHome = () => {
           {/* 动态柱形图 */}
           <div className="bg-white/20 rounded p-3">
             <div className="flex items-end justify-between h-32">
-              {currentData.bars.map((height, index) => (
+              {currentData.bars.map((height: number, index: number) => (
                 <motion.div
                   key={`${currentData.type}-${index}`}
                   className="flex-1 mx-1"
@@ -308,7 +308,7 @@ const OrangeHome = () => {
             </h3>
             
             <div className="grid grid-cols-1 gap-3">
-              {currentData.pieData.map((item, index) => (
+              {currentData.pieData.map((item: any, index: number) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className={`w-4 h-4 ${item.color} rounded`}></div>
@@ -493,7 +493,7 @@ const OrangeHome = () => {
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{ delay: 0.5, duration: 2 }}
-                  points={currentData.values.map((value, index) => {
+                  points={currentData.values.map((value: number, index: number) => {
                     const maxValue = Math.max(...currentData.values);
                     const minValue = Math.min(...currentData.values);
                     const range = maxValue - minValue || 1;
@@ -504,7 +504,7 @@ const OrangeHome = () => {
                 />
                 
                 {/* 数据点 */}
-                {currentData.values.map((value, index) => {
+                {currentData.values.map((value: number, index: number) => {
                   const maxValue = Math.max(...currentData.values);
                   const minValue = Math.min(...currentData.values);
                   const range = maxValue - minValue || 1;
@@ -528,7 +528,7 @@ const OrangeHome = () => {
                 })}
                 
                 {/* 数值标签 */}
-                {currentData.values.map((value, index) => {
+                {currentData.values.map((value: number, index: number) => {
                   const maxValue = Math.max(...currentData.values);
                   const minValue = Math.min(...currentData.values);
                   const range = maxValue - minValue || 1;
@@ -554,7 +554,7 @@ const OrangeHome = () => {
             </div>
             
             <div className="flex justify-between mt-4 text-xs text-blue-600">
-              {currentData.labels.map((label, i) => (
+              {currentData.labels.map((label: string, i: number) => (
                 <span key={i}>{label}</span>
               ))}
             </div>

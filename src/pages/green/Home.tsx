@@ -258,10 +258,10 @@ const GreenHome = () => {
     )
   }
 
-  // 处理政策点击
-  const handlePolicyClick = (policy: any) => {
-    setSelectedPolicy(policy)
-  }
+  // 处理政策点击 - 暂时注释掉未使用的函数
+  // const handlePolicyClick = (policy: any) => {
+  //   setSelectedPolicy(policy)
+  // }
 
   // 关闭政策详情
   const closePolicyDetail = () => {
