@@ -24,7 +24,7 @@ const CarbonShop = () => {
   const categories = ['全部', '农具', '肥料', '种子', '生活用品']
   
   const products: Product[] = [
-    { id: 1, name: '有机肥料', points: 500, icon: '🌱', category: '肥料', description: '优质有机肥料，改善土壤' },
+    { id: 1, name: '有机肥料', points: 500, icon: '🌱', category: '肥料', description: '优质有机肥，改善土壤' },
     { id: 2, name: '优质种子', points: 300, icon: '🌾', category: '种子', description: '高产优质农作物种子' },
     { id: 3, name: '农用工具套装', points: 1000, icon: '🛠️', category: '农具', description: '耐用农具套装' },
     { id: 4, name: '环保购物袋', points: 200, icon: '🛍️', category: '生活用品', description: '可重复使用购物袋' },
@@ -200,7 +200,7 @@ const CarbonShop = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50"
+              className="fixed inset-0 bg-black/50 z-[60]"
               onClick={handleCancelAddToCart}
             />
 
@@ -209,7 +209,7 @@ const CarbonShop = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl z-50 max-w-sm mx-auto"
+              className="fixed inset-x-4 top-[30%] -translate-y-1/2 bg-white rounded-2xl shadow-xl z-[60] max-w-sm mx-auto"
             >
               <div className="p-6">
                 {/* 商品信息 */}
@@ -293,7 +293,7 @@ const CarbonShop = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40"
+              className="fixed inset-0 bg-black/50 z-[55]"
               onClick={() => setShowCart(false)}
             />
 
@@ -303,7 +303,7 @@ const CarbonShop = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween' }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl z-50 flex flex-col"
+              className="fixed right-0 top-0 bottom-0 w-80 bg-white shadow-xl z-[60] flex flex-col pb-20"
             >
               {/* 购物车头部 */}
               <div className="bg-green-500 text-white p-4 flex items-center justify-between">
@@ -375,7 +375,7 @@ const CarbonShop = () => {
 
               {/* 购物车底部 */}
               {cartItems.length > 0 && (
-                <div className="border-t p-4">
+                <div className="border-t p-4 mb-2">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-gray-600">总计</span>
                     <div className="text-right">
@@ -411,7 +411,7 @@ const CarbonShop = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-20 left-4 right-4 bg-green-500 text-white rounded-lg p-4 shadow-lg z-50"
+            className="fixed bottom-24 left-4 right-4 bg-green-500 text-white rounded-lg p-4 shadow-lg z-[60]"
           >
             <div className="flex items-center gap-3">
               <CheckCircle size={24} />

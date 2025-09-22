@@ -283,15 +283,15 @@ const GreenProfile = () => {
                       {chartData.village[index]}
                     </span>
                   </div>
-                  <p className="text-xs text-center mt-2">{chartData.labels[index]}</p>
                 </motion.div>
               ))}
             </div>
-          </div>
-          <div className="flex justify-between mt-2 text-xs text-gray-500">
-            {chartData.labels.slice(0, 7).map((label, i) => (
-              <span key={i} className="text-center">{label.replace('日', '')}</span>
-            ))}
+            {/* 日期标签 */}
+            <div className="flex justify-between mt-2 text-xs text-gray-500">
+              {chartData.labels.map((label, i) => (
+                <span key={i} className="flex-1 text-center">{label}</span>
+              ))}
+            </div>
           </div>
         </motion.div>
 

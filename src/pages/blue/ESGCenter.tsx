@@ -38,7 +38,7 @@ const ESGCenter = () => {
       date: '2024.06.30', 
       status: '已发布',
       score: 85,
-      improvement: '+1.5%'
+      improvement: '+1%'
     },
     { 
       id: 3, 
@@ -256,7 +256,7 @@ const ESGCenter = () => {
                   <span className="text-xs text-green-600 font-medium">
                     {report.improvement}
                   </span>
-                  <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">
+                  <span className="text-xs bg-green-100 text-green-600 px-1.5 py-1 rounded-full">
                     {report.status}
                   </span>
                 </div>
