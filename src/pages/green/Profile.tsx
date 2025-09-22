@@ -39,9 +39,10 @@ const GreenProfile = () => {
   ]
 
   const chartData = {
-    labels: ['12月', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日'],
-    village: [30, 35, 40, 38, 42, 45, 43, 48, 46, 50, 52],
-    total: [45, 48, 50, 52, 55, 58, 60, 62, 65, 68, 70]
+    labels: ['12日', '13日', '14日', '15日', '16日', '17日', '18日'],
+    village: [15, 28, 35, 22, 48, 31, 52],
+    bars: [25, 45, 60, 35, 85, 50, 90], 
+    total: [45, 48, 50, 52, 55, 58, 70]
   }
 
   return (
@@ -266,17 +267,26 @@ const GreenProfile = () => {
           </div>
           <div className="text-sm text-gray-600 mb-2">村里买碳汇，分你50元</div>
           
-          {/* 简化的图表 */}
-          <div className="h-32 bg-gradient-to-t from-green-50 to-transparent rounded-lg flex items-end justify-around px-2 relative">
-            {chartData.village.map((value, index) => (
-              <div key={index} className="flex-1 mx-0.5 flex flex-col items-center">
-                <span className="text-xs text-green-600 mb-1">{value}</span>
-                <div 
-                  className="bg-green-500 rounded-t w-full transition-all duration-500"
-                  style={{ height: `${(value / 60) * 100}%`, minHeight: '8px' }}
-                ></div>
-              </div>
-            ))}
+          {/* 柱形图 - 仿照橙色主页 */}
+          <div className="bg-gradient-to-t from-green-50 to-transparent rounded-lg p-3">
+            <div className="flex items-end justify-between h-32">
+              {chartData.bars.map((height, index) => (
+                <motion.div
+                  key={`green-chart-${index}`}
+                  className="flex-1 mx-1"
+                  initial={{ height: 0 }}
+                  animate={{ height: `${height}%` }}
+                  transition={{ delay: index * 0.1, duration: 0.8 }}
+                >
+                  <div className="bg-green-500 hover:bg-green-600 rounded-t relative h-full transition-colors">
+                    <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs font-bold text-green-600">
+                      {chartData.village[index]}
+                    </span>
+                  </div>
+                  <p className="text-xs text-center mt-2">{chartData.labels[index]}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
           <div className="flex justify-between mt-2 text-xs text-gray-500">
             {chartData.labels.slice(0, 7).map((label, i) => (

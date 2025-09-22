@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, ChevronRight, Leaf, BookOpen, FileText, User, X, ArrowLeft } from 'lucide-react'
+import { Search, ChevronRight, Leaf, BookOpen, FileText, User, X, ArrowLeft, Phone, Mail, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,6 +10,8 @@ const GreenHome = () => {
   const [searchResults, setSearchResults] = useState<any[]>([])
   const [isSearching, setIsSearching] = useState(false)
   const [selectedPolicy, setSelectedPolicy] = useState<any>(null)
+  const [selectedKnowledge, setSelectedKnowledge] = useState<any>(null)
+  const [selectedExpert, setSelectedExpert] = useState<any>(null)
 
   // 搜索类型配置
   const searchTypes = {
@@ -57,6 +59,8 @@ const GreenHome = () => {
       content: '碳汇交易是指通过市场机制实现碳汇资源的有效配置',
       category: '基础知识',
       type: 'knowledge',
+      detail: '碳汇交易是指通过市场机制实现碳汇资源的有效配置，让碳汇的环境价值得到充分体现。农业碳汇作为重要的碳汇来源，通过科学的计量和认证，可以参与到碳交易市场中，为农民带来额外的收入。',
+      examples: ['森林碳汇交易案例', '农田碳汇项目实践', '草地碳汇管理经验'],
       keywords: ['碳汇交易', '碳汇', '市场机制', '资源配置']
     },
     {
@@ -65,7 +69,19 @@ const GreenHome = () => {
       content: '介绍农业活动中碳汇量的科学计算方式',
       category: '技术指导',
       type: 'knowledge',
+      detail: '农业碳汇的计算需要考虑土壤有机碳储量变化、植被碳储量、农业管理措施等多个因素。通过科学的监测方法和计算模型，可以准确评估农业活动的固碳效果。',
+      examples: ['土壤碳储量测定', '作物碳汇计算公式', '碳汇监测技术'],
       keywords: ['农业碳汇', '计算方法', '碳汇量', '科学计算']
+    },
+    {
+      id: 3,
+      title: '碳汇项目申报流程',
+      content: '详细介绍碳汇项目从申报到验收的完整流程',
+      category: '操作指南',
+      type: 'knowledge',
+      detail: '碳汇项目申报需要经过项目准备、基线调查、项目设计、专家评审、实施监测、验收认证等多个环节。每个环节都有严格的技术要求和时间节点。',
+      examples: ['申报材料准备清单', '项目设计书模板', '验收标准说明'],
+      keywords: ['项目申报', '申报流程', '验收认证', '技术要求']
     }
   ]
 
@@ -78,6 +94,12 @@ const GreenHome = () => {
       institution: '中科院环境研究所',
       expertise: '碳汇交易政策、碳汇计量',
       type: 'expert',
+      phone: '138-0000-1234',
+      email: 'zhang.carbon@cas.cn',
+      address: '北京市海淀区中关村南大街12号',
+      introduction: '从事碳汇研究20余年，主持完成国家级碳汇项目30多项，在碳汇交易政策制定和碳汇计量方法研究方面具有丰富经验。',
+      specialties: ['碳汇交易政策解读', '碳汇项目设计', '碳汇量计算与验证', '碳市场分析'],
+      achievements: ['主持制定《农业碳汇计量技术规范》', '获得国家科技进步二等奖', '发表学术论文50余篇'],
       keywords: ['碳汇交易', '政策', '计量', '专家']
     },
     {
@@ -87,7 +109,28 @@ const GreenHome = () => {
       institution: '农科院',
       expertise: '农业碳汇项目、土壤碳汇',
       type: 'expert',
+      phone: '139-0000-5678',
+      email: 'li.green@caas.cn',
+      address: '北京市海淀区中关村南大街12号农科院',
+      introduction: '专注农业碳汇技术研究15年，在土壤碳汇、作物碳汇等领域有深入研究，指导农业碳汇项目100多个。',
+      specialties: ['土壤碳汇管理', '农业减排技术', '碳汇项目实施', '农业可持续发展'],
+      achievements: ['主编《农业碳汇实用技术手册》', '培训农业技术人员1000余人', '推广碳汇技术面积10万亩'],
       keywords: ['农业碳汇', '土壤碳汇', '项目', '专家']
+    },
+    {
+      id: 3,
+      name: '王环保',
+      title: '环境政策专家',
+      institution: '环境保护部政研中心',
+      expertise: '环境政策、碳汇法规',
+      type: 'expert',
+      phone: '137-0000-9999',
+      email: 'wang.env@mep.gov.cn',
+      address: '北京市西城区西直门南小街115号',
+      introduction: '长期从事环境政策研究工作，参与多项碳汇相关法规制定，对碳汇政策有深入理解和丰富实践经验。',
+      specialties: ['碳汇政策解读', '环保法规咨询', '项目合规审查', '政策趋势分析'],
+      achievements: ['参与《碳汇交易管理办法》起草', '主持政策解读培训200余场', '为企业提供政策咨询服务500余次'],
+      keywords: ['环境政策', '碳汇法规', '政策解读', '专家']
     }
   ]
 
@@ -143,6 +186,19 @@ const GreenHome = () => {
     setIsSearching(false)
   }
 
+  // 处理搜索结果点击
+  const handleSearchResultClick = (item: any) => {
+    clearSearch()
+    
+    if (searchType === 'policy') {
+      setSelectedPolicy(item)
+    } else if (searchType === 'knowledge') {
+      setSelectedKnowledge(item)
+    } else if (searchType === 'expert') {
+      setSelectedExpert(item)
+    }
+  }
+
   // 渲染搜索结果
   const renderSearchResults = () => {
     if (!isSearching) return null
@@ -163,12 +219,7 @@ const GreenHome = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="border border-gray-100 rounded-lg p-3 hover:bg-gray-50 cursor-pointer"
-                onClick={() => {
-                  if (searchType === 'policy') {
-                    handlePolicyClick(item)
-                  }
-                  // 可以为其他类型添加相应的处理逻辑
-                }}
+                onClick={() => handleSearchResultClick(item)}
               >
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
@@ -189,10 +240,11 @@ const GreenHome = () => {
                     {item.institution && (
                       <p className="text-xs text-green-600 mt-1">{item.institution}</p>
                     )}
+                    {item.category && (
+                      <p className="text-xs text-blue-600 mt-1">分类：{item.category}</p>
+                    )}
                   </div>
-                  {searchType === 'policy' && (
-                    <ChevronRight className="text-gray-400" size={16} />
-                  )}
+                  <ChevronRight className="text-gray-400" size={16} />
                 </div>
               </motion.div>
             ))}
@@ -214,6 +266,13 @@ const GreenHome = () => {
   // 关闭政策详情
   const closePolicyDetail = () => {
     setSelectedPolicy(null)
+  }
+
+  // 关闭详情页面
+  const closeDetail = () => {
+    setSelectedPolicy(null)
+    setSelectedKnowledge(null)
+    setSelectedExpert(null)
   }
 
   // 渲染政策详情页面
@@ -279,13 +338,171 @@ const GreenHome = () => {
     )
   }
 
+  // 渲染知识详情页面
+  const renderKnowledgeDetail = () => {
+    if (!selectedKnowledge) return null
+
+    return (
+      <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+        <div className="bg-gradient-to-r from-green-400 to-green-500 text-white p-4">
+          <div className="flex items-center gap-3 mb-4">
+            <button onClick={closeDetail} className="p-1 hover:bg-white/20 rounded-full">
+              <ArrowLeft size={20} />
+            </button>
+            <h1 className="text-xl font-bold">知识详情</h1>
+          </div>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <BookOpen className="text-green-600" size={24} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-bold text-gray-800 mb-2">{selectedKnowledge.title}</h2>
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full">{selectedKnowledge.category}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="prose prose-sm max-w-none">
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">详细说明</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">{selectedKnowledge.detail}</p>
+              
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">实例参考</h3>
+              <ul className="text-gray-700 space-y-2">
+                {selectedKnowledge.examples?.map((example: string, index: number) => (
+                  <li key={index}>• {example}</li>
+                ))}
+              </ul>
+              
+              <h3 className="text-lg font-semibold text-gray-800 mb-3 mt-6">相关链接</h3>
+              <div className="bg-green-50 p-4 rounded-lg">
+                <p className="text-gray-700">想了解更多碳汇知识？</p>
+                <button 
+                  onClick={() => {
+                    closeDetail()
+                    navigate('/green/knowledge-quiz')
+                  }}
+                  className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg text-sm"
+                >
+                  参加知识问答获取积分
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // 渲染专家详情页面
+  const renderExpertDetail = () => {
+    if (!selectedExpert) return null
+
+    return (
+      <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+        <div className="bg-gradient-to-r from-green-400 to-green-500 text-white p-4">
+          <div className="flex items-center gap-3 mb-4">
+            <button onClick={closeDetail} className="p-1 hover:bg-white/20 rounded-full">
+              <ArrowLeft size={20} />
+            </button>
+            <h1 className="text-xl font-bold">专家详情</h1>
+          </div>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <User className="text-green-600" size={32} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-bold text-gray-800 mb-1">{selectedExpert.name}</h2>
+                <p className="text-gray-600 mb-2">{selectedExpert.title}</p>
+                <p className="text-sm text-gray-500">{selectedExpert.institution}</p>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">专家介绍</h3>
+                <p className="text-gray-700 leading-relaxed">{selectedExpert.introduction}</p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">专业领域</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {selectedExpert.specialties?.map((specialty: string, index: number) => (
+                    <div key={index} className="bg-green-50 p-2 rounded-lg text-sm text-gray-700">
+                      • {specialty}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">主要成就</h3>
+                <ul className="text-gray-700 space-y-2">
+                  {selectedExpert.achievements?.map((achievement: string, index: number) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">联系方式</h3>
+                <div className="bg-gray-50 p-4 rounded-lg space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Phone className="text-gray-500" size={16} />
+                    <span className="text-gray-700">{selectedExpert.phone}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="text-gray-500" size={16} />
+                    <span className="text-gray-700">{selectedExpert.email}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <MapPin className="text-gray-500" size={16} />
+                    <span className="text-gray-700">{selectedExpert.address}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <button 
+                  onClick={() => {
+                    closeDetail()
+                    navigate('/green/expert-forum')
+                  }}
+                  className="flex-1 bg-green-500 text-white py-3 rounded-lg font-medium"
+                >
+                  在线咨询
+                </button>
+                <button className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium">
+                  预约面谈
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   // 处理公告点击
   const handleAnnouncementClick = (announcementId: number) => {
     if (announcementId === 1) {
       // 绿色农业政策支持
       navigate('/green/policy-support')
+    } else if (announcementId === 2) {
+      // 碳汇知识培训
+      navigate('/green/knowledge-training')
     }
-    // 可以为其他公告添加相应的处理逻辑
   }
 
   const announcements = [
@@ -454,8 +671,10 @@ const GreenHome = () => {
         </div>
       </div>
 
-      {/* 渲染政策详情页面 */}
+      {/* 渲染详情页面 */}
       {renderPolicyDetail()}
+      {renderKnowledgeDetail()}
+      {renderExpertDetail()}
     </div>
   )
 }

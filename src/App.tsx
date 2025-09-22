@@ -18,6 +18,7 @@ import GreenPolicySupport from './pages/green/GreenPolicySupport'
 import PolicyApplication from './pages/green/PolicyApplication'
 import ExpertForum from './pages/green/ExpertForum'
 import KnowledgeQuiz from './pages/green/KnowledgeQuiz'
+import KnowledgeTraining from './pages/green/KnowledgeTraining'
 import Achievements from './pages/green/Achievements'
 import CarbonStats from './pages/green/CarbonStats'
 import TransactionHistory from './pages/green/TransactionHistory'
@@ -81,6 +82,7 @@ function App() {
             <Route path="expert-forum" element={<ExpertForum />} />
             <Route path="knowledge-quiz" element={<KnowledgeQuiz />} />
             <Route path="knowledge-quiz/:quizId" element={<KnowledgeQuiz />} />
+            <Route path="knowledge-training" element={<KnowledgeTraining />} />
             <Route path="achievements" element={<Achievements />} />
             <Route path="carbon-stats" element={<CarbonStats />} />
             <Route path="transaction-history" element={<TransactionHistory />} />

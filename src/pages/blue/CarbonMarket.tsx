@@ -32,7 +32,8 @@ const CarbonMarket = () => {
 
   const chartData = {
     labels: ['9', '10', '11', '12', '1', '2'],
-    values: [30, 45, 60, 55, 70, 85]
+    values: [15, 38, 65, 42, 78, 85],
+    bars: [20, 45, 75, 50, 85, 95] // 直接设置百分比高度
   }
 
   const handleAddToCart = (product: any) => {
@@ -178,21 +179,26 @@ const CarbonMarket = () => {
             <TrendingUp className="text-green-500" size={20} />
           </div>
           
-          {/* 简化图表 */}
-          <div className="h-40 flex items-end justify-around relative">
-            {chartData.values.map((value, index) => (
-              <div key={index} className="flex-1 mx-1 flex flex-col items-center">
-                <span className="text-xs text-blue-600 mb-1 font-medium">{value}%</span>
-                <motion.div 
-                  className="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t transition-all duration-700"
+          {/* 柱形图 - 仿照橙色主页 */}
+          <div className="bg-gray-50 rounded-lg p-3">
+            <div className="flex items-end justify-between h-40">
+              {chartData.bars.map((height, index) => (
+                <motion.div
+                  key={`blue-chart-${index}`}
+                  className="flex-1 mx-1"
                   initial={{ height: 0 }}
-                  animate={{ height: `${(value / 100) * 100}%` }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  style={{ minHeight: '12px' }}
-                />
-                <span className="text-xs text-gray-500 mt-2">{chartData.labels[index]}月</span>
-              </div>
-            ))}
+                  animate={{ height: `${height}%` }}
+                  transition={{ delay: index * 0.1, duration: 0.8 }}
+                >
+                  <div className="bg-gradient-to-t from-blue-500 to-blue-300 hover:from-blue-600 hover:to-blue-400 rounded-t relative h-full transition-colors">
+                    <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs font-bold text-blue-600">
+                      {chartData.values[index]}%
+                    </span>
+                  </div>
+                  <p className="text-xs text-center mt-2">{chartData.labels[index]}月</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
           
           <div className="mt-4 grid grid-cols-3 gap-4 text-center">

@@ -152,8 +152,8 @@ const DataAnalysis = () => {
             </motion.button>
           </div>
           
-          <div className={`grid gap-4 transition-all duration-300 ${
-            showAllVillages ? 'grid-cols-2' : 'flex overflow-x-auto pb-2'
+          <div className={`transition-all duration-300 ${
+            showAllVillages ? 'grid grid-cols-1 gap-3' : 'flex overflow-x-auto pb-2 gap-4'
           }`}>
             {displayedVillages.map((village, index) => (
               <motion.div
@@ -161,43 +161,97 @@ const DataAnalysis = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`bg-white rounded-xl shadow-lg flex-shrink-0 ${showAllVillages ? '' : 'w-40'}`}
+                className={`bg-white rounded-xl shadow-lg ${
+                  showAllVillages 
+                    ? 'flex items-center p-4' 
+                    : 'flex-shrink-0 w-40'
+                }`}
               >
-                <div className="aspect-square bg-gradient-to-br from-orange-100 to-orange-200 rounded-t-xl flex items-center justify-center">
-                  <span className="text-4xl">{village.image}</span>
-                </div>
-                <div className="p-3">
-                  <h4 className="font-medium text-xs mb-1">{village.name}</h4>
-                  <div className="text-xs text-gray-600 mb-2">
-                    <p>{village.amount}吨 • {village.quality}</p>
-                    <p className="text-orange-600 font-bold">￥{village.price}/吨</p>
-                    <p className="text-gray-500">{village.location}</p>
-                  </div>
-                  
-                  <div className="flex gap-1">
-                    {village.status === '已售完' ? (
-                      <button className="flex-1 bg-gray-300 text-gray-600 py-1 rounded text-xs" disabled>
-                        已售完
-                      </button>
-                    ) : (
-                      <>
-                        <button 
-                          onClick={() => handleBid(village)}
-                          className="flex-1 bg-orange-500 text-white py-1 rounded text-xs"
-                        >
-                          {village.status === '竞拍中' ? '竞拍' : '标卖'}
-                        </button>
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="px-2 bg-gray-100 text-gray-600 rounded text-xs"
-                        >
-                          <Eye size={12} />
-                        </motion.button>
-                      </>
-                    )}
-                  </div>
-                </div>
+                {showAllVillages ? (
+                  // 展开时：横向布局
+                  <>
+                    <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                      <span className="text-3xl">{village.image}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <h4 className="font-medium text-sm mb-1">{village.name}</h4>
+                          <div className="text-xs text-gray-600 mb-2">
+                            <p className="inline mr-2">{village.amount}吨</p>
+                            <span className="inline-block bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full text-xs mr-2">
+                              {village.quality}
+                            </span>
+                            <span className="text-orange-600 font-bold">￥{village.price}/吨</span>
+                          </div>
+                          <p className="text-xs text-gray-500">{village.location}</p>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          {village.status === '已售完' ? (
+                            <button className="bg-gray-300 text-gray-600 px-3 py-1 rounded text-xs" disabled>
+                              已售完
+                            </button>
+                          ) : (
+                            <>
+                              <button 
+                                onClick={() => handleBid(village)}
+                                className="bg-orange-500 text-white px-3 py-1 rounded text-xs"
+                              >
+                                {village.status === '竞拍中' ? '竞拍' : '标卖'}
+                              </button>
+                              <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
+                              >
+                                <Eye size={12} />
+                              </motion.button>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  // 收起时：卡片布局
+                  <>
+                    <div className="aspect-square bg-gradient-to-br from-orange-100 to-orange-200 rounded-t-xl flex items-center justify-center">
+                      <span className="text-4xl">{village.image}</span>
+                    </div>
+                    <div className="p-3">
+                      <h4 className="font-medium text-xs mb-1">{village.name}</h4>
+                      <div className="text-xs text-gray-600 mb-2">
+                        <p>{village.amount}吨 • {village.quality}</p>
+                        <p className="text-orange-600 font-bold">￥{village.price}/吨</p>
+                        <p className="text-gray-500">{village.location}</p>
+                      </div>
+                      
+                      <div className="flex gap-1">
+                        {village.status === '已售完' ? (
+                          <button className="flex-1 bg-gray-300 text-gray-600 py-1 rounded text-xs" disabled>
+                            已售完
+                          </button>
+                        ) : (
+                          <>
+                            <button 
+                              onClick={() => handleBid(village)}
+                              className="flex-1 bg-orange-500 text-white py-1 rounded text-xs"
+                            >
+                              {village.status === '竞拍中' ? '竞拍' : '标卖'}
+                            </button>
+                            <motion.button
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                              className="px-2 bg-gray-100 text-gray-600 rounded text-xs"
+                            >
+                              <Eye size={12} />
+                            </motion.button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
               </motion.div>
             ))}
           </div>
